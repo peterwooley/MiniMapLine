@@ -1,0 +1,4 @@
+package-as: MiniMapLine
+ignore:
+    - screenshots
+    - README.md

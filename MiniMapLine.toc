@@ -1,0 +1,13 @@
+## Interface: 90200
+## Version: 1.0.0
+## Title: MiniMapLine
+## Author: Peter Wooley <peterwooley@gmail.com>
+## Notes: Line on your minimap pointing in your current direction.
+## SavedVariables: MiniMapLineDB
+## OptionalDeps: Ace3
+## X-Embeds: Ace3
+
+
+embeds.xml
+enUS.lua
+MiniMapLine.lua
