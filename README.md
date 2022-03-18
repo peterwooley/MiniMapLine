@@ -8,5 +8,7 @@
 1. Install the Iconer add-on using CurseForge, WowUp, or any other add-on manager.
 2. Use the default thickness (2px) or customize it in Options by using the `/mml` command.
 
+<strong>Note</strong>: The line cannot be shown when in a restricted zone (instance, battle ground, arena) as [the API used does not work there](https://wowpedia.fandom.com/wiki/API_GetPlayerFacing).
+
 ## Author
 Created by Peter Wooley. Based on [Greenwolf_Wildhammer's great Red Arrow add-on](https://www.curseforge.com/wow/addons/red-arrow)
