@@ -105,9 +105,11 @@ function MiniMapLine:UpdateLayout()
     if self.timer > 0.1 then
 	  local facing=GetPlayerFacing()
 	  if facing == nil then
-	    facing=0
+		self.Line:Hide()
+	  else
+		if not self.Line:IsVisible() then self.Line:Show() end
+	    RotateTexture(math.deg(facing))
 	  end 
-      RotateTexture(math.deg(facing))
     end
   end)
 end
