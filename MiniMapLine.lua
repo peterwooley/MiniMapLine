@@ -27,13 +27,21 @@ local options = {
 		thickness = {
 			type = "range",
 			name = L["Thickness"],
-			order = 4,
+			order = 2,
 			min = 1,
 			max = 10,
 			step = 1,
 			get = function() return mod.db.profile.thickness end,
 			set = function(info, v) mod.db.profile.thickness = v mod:UpdateLayout() end,
 			disabled = false,
+		},
+		shape = {
+			type = "select",
+			name = L["Shape"],
+			order = 4,
+			values = { [0] = L["Circle"], [1] = L["Square"], },
+			get = function() return mod.db.profile.shape end,
+			set = function(info, v) mod.db.profile.shape = v mod:UpdateLayout() end,
 		}
 	}
 }
@@ -41,7 +49,8 @@ local options = {
 local defaults = {
     profile =  {
 		status = true,
-		thickness=2
+		thickness=2,
+		shape = 0
     },
 }
 
@@ -88,8 +97,32 @@ local function CalculateCorner(angle)
 end
 
 local function CalculateDelta(angle,radius)
+	original = radius
+
+	if mod.db.profile.shape == 1 then
+		-- Square map line
+		edge = angle % 90 / 45;
+		if(edge > 1) then edge=1-(edge-1) end
+		radius = radius + ((sqrt(2*radius^2)-radius) * edge)
+	end
+
     local r = rad(angle+90);
-    return radius * cos(r) , radius *sin(r) ;
+
+	local x = radius * cos(r)
+	local y = radius * sin(r)
+
+	--print("Radius", original)
+	--print(x)
+	if (x >= original) then x = original end
+	if (x <= -original) then x = -original end
+	--print(x)
+
+	--print(y)
+	if (y >= original) then y = original end
+	if (y <= -original) then y = -original end
+	--print(x)
+
+    return x , y 
 end
 
 local function RotateTexture(angle)

@@ -5,8 +5,9 @@
  <img src="screenshots/default.png" alt="Screenshot of MiniMapLine showing on the WoW MiniMap" />
 
 ## Usage
-1. Install the Iconer add-on using CurseForge, WowUp, or any other add-on manager.
+1. Install the MiniMapLine add-on using CurseForge, WowUp, or any other add-on manager.
 2. Use the default thickness (2px) or customize it in Options by using the `/mml` command.
+3. If you're using a square minimap shape, select Square in the `/mml` options to have MiniMapLine adapt its length to the edge of your minimap.
 
 <strong>Note</strong>: The line cannot be shown when in a restricted zone (instance, battle ground, arena) as [the API used does not work there](https://wowpedia.fandom.com/wiki/API_GetPlayerFacing).
 
