@@ -35,6 +35,17 @@ local options = {
 			set = function(info, v) mod.db.profile.thickness = v mod:UpdateLayout() end,
 			disabled = false,
 		},
+		opacity = {
+			type = "range",
+			name = L["Opacity"],
+			order = 3,
+			min = 0.1,
+			max = 1,
+			step = 0.1,
+			get = function() return mod.db.profile.opacity end,
+			set = function(info, v) mod.db.profile.opacity = v mod:UpdateLayout() end,
+			disabled = false,
+		},
 		shape = {
 			type = "select",
 			name = L["Shape"],
@@ -50,7 +61,8 @@ local defaults = {
     profile =  {
 		status = true,
 		thickness=2,
-		shape = 0
+		shape = 0,
+		opacity = 0.4
     },
 }
 
@@ -78,7 +90,7 @@ function MiniMapLine:OnEnable()
 	MiniMapLineFrame.Line = Line
 	Line:Show()
 	Line:SetTexture('interface/buttons/white8x8')
-	Line:SetGradientAlpha('HORIZONTAL', 1, 1, 1, 0.1, 1, 1, 1, 0.75)
+	Line:SetAlpha(mod.db.profile.opacity)
 	Line:SetThickness(mod.db.profile.thickness)
 	Line:SetStartPoint('CENTER', Minimap, 0, 0)
 	Line:SetEndPoint('CENTER', MiniMapLineFrame, 0, 0)
@@ -129,6 +141,7 @@ local function RotateTexture(angle)
 	local deltax,deltay = CalculateDelta(angle,Minimap:GetWidth()/2)
 	MiniMapLineFrame:SetPoint("CENTER", "Minimap", "CENTER", deltax, deltay);
 	MiniMapLineFrame.Line:SetThickness(mod.db.profile.thickness)
+	MiniMapLineFrame.Line:SetAlpha(mod.db.profile.opacity)
 end
 
 function MiniMapLine:UpdateLayout()
