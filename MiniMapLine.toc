@@ -1,4 +1,4 @@
-## Interface: 100005
+## Interface: 100007
 ## Version: 1.0.7
 ## Title: MiniMapLine
 ## Author: Peter Wooley <peterwooley@gmail.com>
