@@ -82,11 +82,11 @@ function MiniMapLine:ChatCommand(input)
 end
 
 function MiniMapLine:OnEnable()
-	MiniMapLineFrame = CreateFrame("Frame", "MiniMapLineFrameFrame", Minimap)
+	MiniMapLineFrame = CreateFrame("Frame", "MiniMapLineFrame", UIParent)
 	MiniMapLineFrame:SetSize(1,1)
 	MiniMapLineFrame:SetPoint("CENTER")
 
-	local Line = MiniMapLineFrame:CreateLine(nil, 'OVERLAY')
+	local Line = MiniMapLineFrame:CreateLine("MiniMapLineFrameLine", 'OVERLAY')
 	MiniMapLineFrame.Line = Line
 	Line:Show()
 	Line:SetTexture('interface/buttons/white8x8')
@@ -139,7 +139,7 @@ end
 
 local function RotateTexture(angle)
 	local deltax,deltay = CalculateDelta(angle,Minimap:GetWidth()/2)
-	MiniMapLineFrame:SetPoint("CENTER", "Minimap", "CENTER", deltax, deltay);
+	MiniMapLineFrame:SetPoint("CENTER", Minimap, "CENTER", deltax, deltay);
 	MiniMapLineFrame.Line:SetThickness(mod.db.profile.thickness)
 	MiniMapLineFrame.Line:SetAlpha(mod.db.profile.opacity)
 end
