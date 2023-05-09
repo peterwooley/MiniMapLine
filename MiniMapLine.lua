@@ -95,7 +95,16 @@ function MiniMapLine:OnEnable()
 	Line:SetStartPoint('CENTER', Minimap, 0, 0)
 	Line:SetEndPoint('CENTER', MiniMapLineFrame, 0, 0)
 
-	if mod.db.profile.status then
+	Minimap:HookScript("OnShow", function()
+		if mod.db.profile.status then
+			MiniMapLineFrame:Show()
+			mod:UpdateLayout()
+		end
+	end)
+	Minimap:HookScript("OnHide", function() MiniMapLineFrame:Hide() end)
+
+
+	if mod.db.profile.status and Minimap:IsVisible() then
 		MiniMapLineFrame:Show()
 		mod:UpdateLayout()
 	end
