@@ -35,10 +35,31 @@ local options = {
 			set = function(info, v) mod.db.profile.thickness = v mod:UpdateLayout() end,
 			disabled = false,
 		},
+		shape = {
+			type = "select",
+			name = L["Shape"],
+			order = 3,
+			values = { [0] = L["Circle"], [1] = L["Square"], },
+			get = function() return mod.db.profile.shape end,
+			set = function(info, v) mod.db.profile.shape = v mod:UpdateLayout() end,
+		},
+		colorHeading = {
+			type = "header",
+			name = L["Color Heading"],
+			order = 4
+		},
+		color = {
+			type = "color",
+			name = L["Color"],
+			order = 5,
+			get = function() return unpack(mod.db.profile.color) end,
+			set = function(info, r, g, b, a) mod.db.profile.color = {r, g, b, a} mod:UpdateLayout() end,
+			disabled = false,
+		},
 		opacity = {
 			type = "range",
 			name = L["Opacity"],
-			order = 3,
+			order = 6,
 			min = 0.1,
 			max = 1,
 			step = 0.1,
@@ -46,14 +67,6 @@ local options = {
 			set = function(info, v) mod.db.profile.opacity = v mod:UpdateLayout() end,
 			disabled = false,
 		},
-		shape = {
-			type = "select",
-			name = L["Shape"],
-			order = 4,
-			values = { [0] = L["Circle"], [1] = L["Square"], },
-			get = function() return mod.db.profile.shape end,
-			set = function(info, v) mod.db.profile.shape = v mod:UpdateLayout() end,
-		}
 	}
 }
 
@@ -62,6 +75,7 @@ local defaults = {
 		status = true,
 		thickness=2,
 		shape = 0,
+		color = {1,1,1,1},
 		opacity = 0.4
     },
 }
@@ -89,7 +103,7 @@ function MiniMapLine:OnEnable()
 	local Line = MiniMapLineFrame:CreateLine("MiniMapLineFrameLine", 'OVERLAY')
 	MiniMapLineFrame.Line = Line
 	Line:Show()
-	Line:SetTexture('interface/buttons/white8x8')
+	Line:SetColorTexture(unpack(mod.db.profile.color))
 	Line:SetAlpha(mod.db.profile.opacity)
 	Line:SetThickness(mod.db.profile.thickness)
 	Line:SetStartPoint('CENTER', Minimap, 0, 0)
@@ -149,6 +163,7 @@ end
 local function RotateTexture(angle)
 	local deltax,deltay = CalculateDelta(angle,Minimap:GetWidth()/2)
 	MiniMapLineFrame:SetPoint("CENTER", Minimap, "CENTER", deltax, deltay);
+	MiniMapLineFrame.Line:SetColorTexture(unpack(mod.db.profile.color))
 	MiniMapLineFrame.Line:SetThickness(mod.db.profile.thickness)
 	MiniMapLineFrame.Line:SetAlpha(mod.db.profile.opacity)
 end
