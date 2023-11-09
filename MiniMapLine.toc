@@ -3,6 +3,7 @@
 ## Title: MiniMapLine
 ## Author: Peter Wooley <peterwooley@gmail.com>
 ## Notes: Adds a line to your minimap pointing in your current direction.
+## IconTexture: Interface\AddOns\MiniMapLine\icon.png
 ## SavedVariables: MiniMapLineDB
 ## OptionalDeps: Ace3
 ## X-Embeds: Ace3
