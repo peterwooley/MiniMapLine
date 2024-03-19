@@ -1,4 +1,4 @@
-## Interface: 100205
+## Interface: 100206
 ## Version: 1.1.2
 ## Title: MiniMapLine
 ## Author: Peter Wooley <peterwooley@gmail.com>
