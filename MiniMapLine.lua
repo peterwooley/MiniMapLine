@@ -91,8 +91,7 @@ end
 
 
 function MiniMapLine:ChatCommand(input)
-    InterfaceOptionsFrame_OpenToCategory(self.optionsFrame)
-	InterfaceOptionsFrame_OpenToCategory(self.optionsFrame)
+    Settings.OpenToCategory("MiniMapLine")
 end
 
 function MiniMapLine:OnEnable()
