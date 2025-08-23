@@ -11,4 +11,7 @@
 
 embeds.xml
 enUS.lua
+ruRU.lua
+esES.lua
+
 MiniMapLine.lua

@@ -1,5 +1,7 @@
-local L = LibStub("AceLocale-3.0"):NewLocale("MiniMapLine", "ruRU", true)
--- Translator ZamestoTV
+local L = LibStub("AceLocale-3.0"):NewLocale("MiniMapLine", "ruRU")
+if not L then return end
+
+-- Translated by ZamestoTV
 L["Show Line"] = "Показать линию"
 L["Thickness"] = "Толщина"
 L["Opacity"] = "Прозрачность"
