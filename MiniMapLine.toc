@@ -1,5 +1,5 @@
 ## Interface: 120007, 120100
-## Version: 1.1.18
+## Version: 1.1.19
 ## Title: MiniMapLine
 ## Author: Peter Wooley <peterwooley@gmail.com>
 ## Notes: Adds a line to your minimap pointing in your current direction.
