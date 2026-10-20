@@ -103,14 +103,14 @@ function MiniMapLine:OnInitialize()
     -- Called when the addon is loaded
     mod.db = LibStub("AceDB-3.0"):New("MiniMapLineDB", defaults, true)
     LibStub("AceConfig-3.0"):RegisterOptionsTable("MiniMapLine", options)
-    self.optionsFrame = LibStub("AceConfigDialog-3.0"):AddToBlizOptions("MiniMapLine", "MiniMapLine")
+    self.optionsFrame, self.optionsCategoryID = LibStub("AceConfigDialog-3.0"):AddToBlizOptions("MiniMapLine", "MiniMapLine")
     self:RegisterChatCommand("mml", "ChatCommand")
     self:RegisterChatCommand("minimapline", "ChatCommand")
 end
 
 
 function MiniMapLine:ChatCommand(input)
-    Settings.OpenToCategory("MiniMapLine")
+    Settings.OpenToCategory(self.optionsCategoryID)
 end
 
 function MiniMapLine:OnEnable()
